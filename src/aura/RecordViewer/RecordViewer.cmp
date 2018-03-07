@@ -1,4 +1,6 @@
 <aura:component controller="RecordViewerController" implements="force:hasRecordId,flexipage:availableForRecordHome" >
+	<!-- CometD -->
+	<ltng:require scripts="{!$Resource.cometd}" afterScriptsLoaded="{!c.onCometDLoaded}"/>
 	<!-- Variables -->
 	<aura:attribute name="recordId" type="String" />
 	<aura:attribute name="sessionId" type="String" />

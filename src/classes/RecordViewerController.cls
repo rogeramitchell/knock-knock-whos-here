@@ -1,21 +1,23 @@
 public class RecordViewerController
 {
-	@AuraEnabled
-	public static String getSessionId()
+	public class RecordViewWrapper
 	{
-		return UserInfo.getSessionId();
+		@AuraEnabled public List<User> recordViewers;
+		@AuraEnabled public String sessionId;
 	}
 
 	@AuraEnabled
-	public static List<User> handleInit(Id recordId)
+	public static RecordViewWrapper handleInit(Id recordId)
 	{
 		// insert a record into Record Viewer object for current user
 		insertRecordViewer(recordId);
 
 		// get collection of Record Viewers for this object
-		List<User> records = getRecordViewers(recordId);
+		RecordViewWrapper wrapper = new RecordViewWrapper();
+		wrapper.recordViewers = getRecordViewers(recordId);
+		wrapper.sessionId = UserInfo.getSessionId();
 
-		return records;
+		return wrapper;
 	}
 
 	@AuraEnabled
