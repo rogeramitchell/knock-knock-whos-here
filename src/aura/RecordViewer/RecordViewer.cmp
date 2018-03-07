@@ -1,1 +1,17 @@
-<aura:component ></aura:component>
+<aura:component controller="RecordViewerController" implements="force:hasRecordId,flexipage:availableForRecordHome" >
+	<!-- Variables -->
+	<aura:attribute name="recordId" type="String" />
+	<aura:attribute name="sessionId" type="String" />
+	<aura:attribute name="cometd" type="Object" />
+	<aura:attribute name="cometdSubscriptions" type="Object[]" />
+	<aura:attribute name="recordViewers" type="Object[]" />
+	<!-- Event Handlers -->
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+	<!-- Markup -->
+	<div>
+	Hello	
+		<aura:iteration items="{!v.recordViewers}" var="recordViewer">
+			<img src="{!recordViewer.SmallPhotoUrl}" alt="{!recordViewer.Name}"/>
+		</aura:iteration>
+	</div>
+</aura:component>

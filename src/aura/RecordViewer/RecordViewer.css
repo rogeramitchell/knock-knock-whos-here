@@ -1,2 +1,8 @@
 .THIS {
+	background-color: white;
+}
+
+.THIS img {
+	border-radius: 50%;
+	margin: 0.25rem;
 }

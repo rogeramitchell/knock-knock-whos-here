@@ -1,6 +1,12 @@
 public class RecordViewerController
 {
 	@AuraEnabled
+	public static String getSessionId()
+	{
+		return UserInfo.getSessionId();
+	}
+
+	@AuraEnabled
 	public static List<User> handleInit(Id recordId)
 	{
 		// insert a record into Record Viewer object for current user
