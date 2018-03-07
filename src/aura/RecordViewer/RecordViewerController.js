@@ -32,5 +32,25 @@
       appendMessageTypeToURL : false
     });
     cometd.websocketEnabled = false;
+
+    console.log(cometd);
+
+    cometd.handshake(function(handshakeReply) {
+      if (handshakeReply.successful) {
+      	console.log('cometd handshake')
+        var newSubscription = cometd.subscribe('/event/Record_View__e',
+          function(platformEvent) {
+            console.log('Platform event received: '+ JSON.stringify(platformEvent));
+            // helper.onReceiveNotification(component, platformEvent);
+          }
+        );
+        // Save subscription for later
+        var subscriptions = component.get('v.cometdSubscriptions');
+        subscriptions.push(newSubscription);
+        component.set('v.cometdSubscriptions', subscriptions);
+      }
+      else
+        console.error('Failed to connected to CometD.');
+    });
 	}
 })
