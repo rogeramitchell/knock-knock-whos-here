@@ -23,6 +23,29 @@
 
 		$A.enqueueAction(action);
 	},
+	doDestroy : function(component) {
+		console.log('hi')
+		let recordId = component.get("v.recordId");
+		let action = component.get("c.deleteRecordViewer");
+
+		action.setParams({
+			recordId: recordId
+		});
+
+		action.setCallback(this, function(response) {
+			let responseState = response.getState();
+			if(responseState === "SUCCESS") {
+				console.log("Success ✅");
+			} else {
+				console.error("There were some errors! 🔥")
+				console.error(response);
+				console.error(responseState);
+				console.error(response.getReturnValue());
+			}
+		})
+
+		$A.enqueueAction(action);
+	},
 	onCometDLoaded : function(component) {
 		let cometdUrl = window.location.protocol + '//' + window.location.hostname + '/cometd/41.0/';
 		let cometd = component.get("v.cometd");
