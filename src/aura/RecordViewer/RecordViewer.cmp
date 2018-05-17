@@ -1,6 +1,6 @@
 <aura:component controller="RecordViewerController" implements="force:hasRecordId,flexipage:availableForRecordHome" >
 	<!-- CometD -->
-	<ltng:require scripts="{!$Resource.cometd}" afterScriptsLoaded="{!c.onCometDLoaded}"/>
+	<!-- <ltng:require scripts="{!$Resource.cometd}" afterScriptsLoaded="{!c.onCometDLoaded}"/> -->
 	<!-- Variables -->
 	<aura:attribute name="recordId" type="String" />
 	<aura:attribute name="sessionId" type="String" />
@@ -9,8 +9,8 @@
 	<aura:attribute name="recordViewers" type="Object[]" />
 	<!-- Event Handlers -->
 	<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
-	<!-- <aura:handler name="destroy" value="{!this}" action="{!c.doDestroy}" /> -->
-	<aura:handler name="aura:locationChange" value="{!this}" action="{!c.doDestroy}" />
+	<aura:handler name="destroy" value="{!this}" action="{!c.doDestroy}" />
+	<!-- <aura:handler name="aura:locationChange" value="{!this}" action="{!c.doDestroy}" /> -->
 	<!-- Markup -->
 	<div>
 	Hello	
